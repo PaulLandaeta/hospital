@@ -1,6 +1,7 @@
 package com.digitalharbor.hospital.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -18,11 +19,13 @@ public class Hospital {
     String photoURL;
 
     @Column(name="created")
-    String created;
+    @Temporal(TemporalType.DATE)
+    Date created;
     @Column(name="createdBy")
     String createdBy;
     @Column(name="updated")
-    String updated;
+    @Temporal(TemporalType.DATE)
+    Date updated;
     @Column(name="updatedBy")
     String updatedBy;
 
@@ -56,14 +59,6 @@ public class Hospital {
         this.photoURL = photoURL;
     }
 
-    public String getCreated() {
-        return created;
-    }
-
-    public void setCreated(String created) {
-        this.created = created;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
@@ -72,19 +67,27 @@ public class Hospital {
         this.createdBy = createdBy;
     }
 
-    public String getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(String updated) {
-        this.updated = updated;
-    }
-
     public String getUpdatedBy() {
         return updatedBy;
     }
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }

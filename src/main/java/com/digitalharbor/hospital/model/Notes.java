@@ -1,6 +1,7 @@
 package com.digitalharbor.hospital.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "NOTES")
@@ -12,13 +13,16 @@ public class Notes {
     @Column(name="Description")
     String description;
     @Column(name="date")
-    String date;
+    @Temporal(TemporalType.DATE)
+    Date date;
     @Column(name="created")
-    String created;
+    @Temporal(TemporalType.DATE)
+    Date created;
     @Column(name="createdBy")
     String createdBy;
     @Column(name="updated")
-    String updated;
+    @Temporal(TemporalType.DATE)
+    Date updated;
     @Column(name="updatedBy")
     String updatedBy;
 
@@ -46,14 +50,6 @@ public class Notes {
         this.description = description;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public Patient getPatient() {
         return patient;
     }
@@ -62,28 +58,12 @@ public class Notes {
         this.patient = patient;
     }
 
-    public String getCreated() {
-        return created;
-    }
-
-    public void setCreated(String created) {
-        this.created = created;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
-    }
-
-    public String getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(String updated) {
-        this.updated = updated;
     }
 
     public String getUpdatedBy() {
@@ -100,5 +80,29 @@ public class Notes {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

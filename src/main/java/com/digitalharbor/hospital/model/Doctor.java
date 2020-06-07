@@ -1,6 +1,7 @@
 package com.digitalharbor.hospital.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,21 +13,21 @@ public class Doctor {
     Long id;
     @Column(name="NAME")
     String name;
-    @Column(name="PHONE")
-    String phone;
-    @Column(name="CITY")
-    String city;
     @Column(name="ADDRESS")
     String address;
     @Column(name="PHOTO_URL")
     String photo_url;
-
+    @Column(name="birthday")
+    @Temporal(TemporalType.DATE)
+    Date birthday;
     @Column(name="created")
-    String created;
+    @Temporal(TemporalType.DATE)
+    Date created;
     @Column(name="createdBy")
     String createdBy;
     @Column(name="updated")
-    String updated;
+    @Temporal(TemporalType.DATE)
+    Date updated;
     @Column(name="updatedBy")
     String updatedBy;
 
@@ -49,18 +50,6 @@ public class Doctor {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getAddress() {
@@ -94,14 +83,6 @@ public class Doctor {
         this.photo_url = photo_url;
     }
 
-    public String getCreated() {
-        return created;
-    }
-
-    public void setCreated(String created) {
-        this.created = created;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
@@ -110,19 +91,35 @@ public class Doctor {
         this.createdBy = createdBy;
     }
 
-    public String getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(String updated) {
-        this.updated = updated;
-    }
-
     public String getUpdatedBy() {
         return updatedBy;
     }
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
