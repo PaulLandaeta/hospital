@@ -18,6 +18,17 @@ public class Doctor {
     String city;
     @Column(name="ADDRESS")
     String address;
+    @Column(name="PHOTO_URL")
+    String photo_url;
+
+    @Column(name="created")
+    String created;
+    @Column(name="createdBy")
+    String createdBy;
+    @Column(name="updated")
+    String updated;
+    @Column(name="updatedBy")
+    String updatedBy;
 
     @ManyToOne( optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "HOSPITAL_ID")
@@ -73,5 +84,45 @@ public class Doctor {
 
     public void setSpecialities(Set<Speciality> specialities) {
         this.specialities = specialities;
+    }
+
+    public String getPhoto_url() {
+        return photo_url;
+    }
+
+    public void setPhoto_url(String photo_url) {
+        this.photo_url = photo_url;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }

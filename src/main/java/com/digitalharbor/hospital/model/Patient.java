@@ -19,6 +19,14 @@ public class Patient {
     String city;
     @Column(name="ADDRESS")
     String address;
+    @Column(name="created")
+    String created;
+    @Column(name="createdBy")
+    String createdBy;
+    @Column(name="updated")
+    String updated;
+    @Column(name="updatedBy")
+    String updatedBy;
 
     @ManyToOne( optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "HOSPITAL_ID",nullable = false)
@@ -74,5 +82,37 @@ public class Patient {
 
     public void setNotes(Set<Notes> notes) {
         this.notes = notes;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }

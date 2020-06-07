@@ -17,6 +17,15 @@ public class Hospital {
     @Column(name="PHOTO_URL")
     String photoURL;
 
+    @Column(name="created")
+    String created;
+    @Column(name="createdBy")
+    String createdBy;
+    @Column(name="updated")
+    String updated;
+    @Column(name="updatedBy")
+    String updatedBy;
+
     //GETTERS & SETTERS
     public Long getId() {
         return id;
@@ -47,4 +56,35 @@ public class Hospital {
         this.photoURL = photoURL;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
 }

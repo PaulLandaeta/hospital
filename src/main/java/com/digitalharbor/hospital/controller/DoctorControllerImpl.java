@@ -23,25 +23,25 @@ public class DoctorControllerImpl implements DoctorController{
 
     @RequestMapping(value = "/doctor/{id}", method = RequestMethod.GET, produces = "application/json")
     @Override
-    public Optional<Doctor> getDoctorById(Long id) {
+    public Optional<Doctor> getDoctorById(@PathVariable("id") Long id) {
         return doctorService.findDoctorById(id);
     }
 
     @RequestMapping(value = "/doctor/add", method = RequestMethod.POST, produces = "application/json")
     @Override
-    public Doctor addDoctor(Doctor doctor) {
+    public Doctor addDoctor(@RequestBody Doctor doctor) {
         return doctorService.saveDoctor(doctor);
     }
 
     @RequestMapping(value = "/doctor/delete/{id}", method = RequestMethod.GET, produces = "application/json")
     @Override
-    public String deleteHospital(Long id) {
+    public String deleteHospital(@PathVariable("id") Long id) {
         return doctorService.deleteDoctor(id);
     }
 
     @RequestMapping(value = "/doctor/update", method = RequestMethod.PATCH, produces = "application/json")
     @Override
-    public String updateDoctor(Doctor doctorUpdated) {
+    public String updateDoctor(@RequestBody Doctor doctorUpdated) {
         return doctorService.updateDoctor(doctorUpdated);
     }
 }

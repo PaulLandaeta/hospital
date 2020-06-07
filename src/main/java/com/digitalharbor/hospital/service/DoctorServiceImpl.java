@@ -40,7 +40,9 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor saveDoctor(Doctor doctorNew) {
+        Hospital hospital = hospitalRepository.findById(doctorNew.getHospital().getId()).orElse(null);
         if(doctorNew != null) {
+            doctorNew.setHospital(hospital);
             return doctorRepository.save(doctorNew);
         }
         return new Doctor();
