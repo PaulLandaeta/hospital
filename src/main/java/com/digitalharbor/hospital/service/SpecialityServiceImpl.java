@@ -1,17 +1,23 @@
 package com.digitalharbor.hospital.service;
 
+import com.digitalharbor.hospital.model.Hospital;
 import com.digitalharbor.hospital.model.Speciality;
+import com.digitalharbor.hospital.repository.HospitalRepository;
 import com.digitalharbor.hospital.repository.SpecialityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class SpecialityServiceImpl implements SpecialityService {
     @Autowired
     SpecialityRepository specialityRepository;
+    @Autowired
+    HospitalRepository hospitalRepository;
 
     @Override
     public List<Speciality> findAllSpeciality() {
@@ -26,7 +32,14 @@ public class SpecialityServiceImpl implements SpecialityService {
 
     @Override
     public Speciality saveSpeciality(Speciality specialityNew) {
+        Set<Hospital> hospitalSet = new HashSet<>();
+        specialityNew.getHospitals().forEach((hospital) -> {
+            Hospital newHospital = hospitalRepository.findById(hospital.getId()).orElse(null);
+          hospitalSet.add(newHospital);
+        });
+
         if(specialityNew != null) {
+            specialityNew.setHospitals(hospitalSet);
             return specialityRepository.save(specialityNew);
         }
         return new Speciality();

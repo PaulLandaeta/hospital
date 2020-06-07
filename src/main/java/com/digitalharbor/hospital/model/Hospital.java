@@ -1,6 +1,7 @@
 package com.digitalharbor.hospital.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Hospital")
@@ -15,7 +16,6 @@ public class Hospital {
     String address;
     @Column(name="PHOTO_URL")
     String photoURL;
-
 
     //GETTERS & SETTERS
     public Long getId() {
@@ -46,6 +46,5 @@ public class Hospital {
     public void setPhotoURL(String photoURL) {
         this.photoURL = photoURL;
     }
-
 
 }

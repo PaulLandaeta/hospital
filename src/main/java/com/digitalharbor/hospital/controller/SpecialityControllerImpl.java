@@ -3,13 +3,12 @@ package com.digitalharbor.hospital.controller;
 import com.digitalharbor.hospital.model.Speciality;
 import com.digitalharbor.hospital.service.SpecialityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 @RestController
+@CrossOrigin(origins = "*")
 public class SpecialityControllerImpl implements SpecialityController {
     @Autowired
     SpecialityService specialityService;
@@ -26,9 +25,9 @@ public class SpecialityControllerImpl implements SpecialityController {
         return specialityService.findSpecialityById(id);
     }
 
-    @RequestMapping(value = "/speciality/add", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/specialty/add", method = RequestMethod.POST, produces = "application/json")
     @Override
-    public Speciality addSpeciality(Speciality speciality) {
+    public Speciality addSpeciality(@RequestBody Speciality speciality) {
         return specialityService.saveSpeciality(speciality);
     }
 

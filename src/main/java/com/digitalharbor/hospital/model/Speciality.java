@@ -1,6 +1,7 @@
 package com.digitalharbor.hospital.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,6 +18,12 @@ public class Speciality {
     String description;
     @Column(name="ICON")
     String icon;
+
+    @ManyToMany
+    Set<Doctor> doctors;
+
+    @ManyToMany
+    private Set<Hospital> hospitals = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -48,5 +55,21 @@ public class Speciality {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Set<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(Set<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
+    public Set<Hospital> getHospitals() {
+        return hospitals;
+    }
+
+    public void setHospitals(Set<Hospital> hospitals) {
+        this.hospitals = hospitals;
     }
 }
