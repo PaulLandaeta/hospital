@@ -3,23 +3,22 @@ package com.digitalharbor.hospital.controller;
 import com.digitalharbor.hospital.model.Doctor;
 import com.digitalharbor.hospital.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class DoctorControllerImpl implements DoctorController{
 
     @Autowired
     DoctorService doctorService;
 
-    @RequestMapping(value = "/doctors", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/doctors/{id}", method = RequestMethod.GET, produces = "application/json")
     @Override
-    public List<Doctor> getDoctor() {
-        return doctorService.findAllDoctor();
+    public List<Doctor> getDoctor(@PathVariable("id") Long id) {
+        return doctorService.findAllDoctors(id);
     }
 
     @RequestMapping(value = "/doctor/{id}", method = RequestMethod.GET, produces = "application/json")

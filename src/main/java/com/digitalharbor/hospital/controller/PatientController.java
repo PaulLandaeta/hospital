@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PatientController {
-    public List<Patient> getPatient();
+    public List<Patient> getPatient(Long id);
 
     public Optional<Patient> getPatientById(Long id);
 

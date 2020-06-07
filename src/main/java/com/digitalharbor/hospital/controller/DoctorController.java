@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DoctorController {
-    public List<Doctor> getDoctor();
+    public List<Doctor> getDoctor(Long id);
 
     public Optional<Doctor> getDoctorById(Long id);
 

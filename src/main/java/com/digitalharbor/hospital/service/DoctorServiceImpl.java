@@ -1,10 +1,14 @@
 package com.digitalharbor.hospital.service;
 
 import com.digitalharbor.hospital.model.Doctor;
+import com.digitalharbor.hospital.model.Hospital;
+import com.digitalharbor.hospital.model.Speciality;
 import com.digitalharbor.hospital.repository.DoctorRepository;
+import com.digitalharbor.hospital.repository.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,10 +16,20 @@ import java.util.Optional;
 public class DoctorServiceImpl implements DoctorService {
     @Autowired
     DoctorRepository doctorRepository;
+    @Autowired
+    HospitalRepository hospitalRepository;
 
     @Override
-    public List<Doctor> findAllDoctor() {
-        return doctorRepository.findAll();
+    public List<Doctor> findAllDoctors(Long id) {
+        List<Doctor> doctors = doctorRepository.findAll();
+        List<Doctor> byHospital = new LinkedList<>();
+        Hospital hospital = hospitalRepository.findById(id).orElse(null);
+        doctors.forEach(doctor -> {
+            if(doctor.getHospital().getId() == id) {
+                byHospital.add(doctor);
+            }
+        });
+        return byHospital;
     }
 
     @Override

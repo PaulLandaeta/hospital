@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
-    public List<Patient> findAllPatient();
+    public List<Patient> findAllPatient(Long id);
 
     public Optional<Patient> findPatientById(Long id);
 

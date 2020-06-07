@@ -14,10 +14,10 @@ public class PatientControllerImpl implements PatientController {
     @Autowired
     PatientService patientService;
 
-    @RequestMapping(value = "/patients", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/patients/{id}", method = RequestMethod.GET, produces = "application/json")
     @Override
-    public List<Patient> getPatient() {
-        return patientService.findAllPatient();
+    public List<Patient> getPatient(@PathVariable("id") Long id) {
+        return patientService.findAllPatient(id);
     }
 
     @RequestMapping(value = "/patient/{id}", method = RequestMethod.GET, produces = "application/json")
