@@ -13,10 +13,10 @@ public class SpecialityControllerImpl implements SpecialityController {
     @Autowired
     SpecialityService specialityService;
 
-    @RequestMapping(value = "/specialities", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/specialities/{id}", method = RequestMethod.GET, produces = "application/json")
     @Override
-    public List<Speciality> getSpeciality() {
-        return specialityService.findAllSpeciality();
+    public List<Speciality> getSpeciality(@PathVariable("id") Long id) {
+        return specialityService.findAllSpeciality(id);
     }
 
     @RequestMapping(value = "/speciality/{id}", method = RequestMethod.GET, produces = "application/json")

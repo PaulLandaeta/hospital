@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SpecialityService {
-    public List<Speciality> findAllSpeciality();
+    public List<Speciality> findAllSpeciality(Long id);
 
     public Optional<Speciality> findSpecialityById(Long id);
 

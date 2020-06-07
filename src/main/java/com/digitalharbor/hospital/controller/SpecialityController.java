@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SpecialityController {
-    public List<Speciality> getSpeciality();
+    public List<Speciality> getSpeciality(Long id);
 
     public Optional<Speciality> getSpecialityById(Long id);
 
